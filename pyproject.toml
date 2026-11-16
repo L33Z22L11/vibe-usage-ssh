@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vibe-usage-ssh"
+version = "0.1.0"
+description = "A responsive Vibe Usage dashboard over SSH"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE"]
+dependencies = ["textual==0.89.1", "asyncssh==2.24.1"]
+
+[project.optional-dependencies]
+dev = ["ruff==0.17.5"]
+
+[project.scripts]
+vibe-usage-ssh = "vibe_usage_ssh.server:run"
+
+[tool.setuptools.packages.find]
+include = ["vibe_usage_ssh*"]
+
+[tool.setuptools.package-data]
+vibe_usage_ssh = ["dashboard.tcss"]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 100
+exclude = [".venv"]
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I", "UP", "B"]

@@ -1,0 +1,12 @@
+[Unit]
+Description=Vibe Usage SSH dashboard
+After=network-online.target
+
+[Service]
+WorkingDirectory=/absolute/path/to/vibe-usage-ssh
+ExecStart=/bin/sh /absolute/path/to/vibe-usage-ssh/scripts/run.sh
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target

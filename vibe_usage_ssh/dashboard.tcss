@@ -1,0 +1,259 @@
+Screen {
+  layers: base chart-tooltip;
+}
+#updated {
+  width: 1fr;
+  min-width: 0;
+  color: $text-muted;
+}
+#toolbar {
+  layout: horizontal;
+  height: 1;
+}
+#topbar {
+  height: auto;
+  background: $background;
+}
+Screen.sticky #topbar {
+  dock: top;
+}
+RangeTab {
+  width: 1fr;
+  height: 1;
+  content-align: center middle;
+}
+RangeTab:focus {
+  text-style: underline;
+}
+Button {
+  min-width: 0;
+  padding: 0 1;
+}
+.range-button {
+  display: none;
+  width: 1fr;
+  height: 3;
+}
+Screen.narrow .range-button {
+  padding: 0;
+}
+#quick-filters {
+  grid-size: 2;
+  grid-columns: 1fr;
+  grid-rows: auto;
+  height: auto;
+  grid-gutter: 1;
+}
+#quick-filters Select {
+  width: 1fr;
+  height: auto;
+}
+#quick-filters SelectCurrent,
+#quick-filters Select:focus > SelectCurrent {
+  height: auto;
+  border: none;
+  padding: 0 1;
+}
+#quick-filters SelectCurrent #label {
+  height: auto;
+}
+Screen.wide #quick-filters {
+  grid-size: 4;
+}
+Screen.roomy #toolbar {
+  height: 3;
+}
+Screen.roomy RangeTab {
+  display: none;
+}
+Screen.roomy .range-button {
+  display: block;
+}
+Screen.roomy #quick-filters SelectCurrent {
+  height: auto;
+  min-height: 3;
+  border: tall $border-blurred;
+  padding: 0 1;
+}
+Screen.roomy #quick-filters Select:focus > SelectCurrent {
+  height: auto;
+  border: tall $border;
+  padding: 0 1;
+}
+#body {
+  height: 1fr;
+  padding: 0 1;
+  scrollbar-size: 1 1;
+}
+#summary {
+  grid-size: 2;
+  grid-rows: 4;
+  height: 8;
+  grid-gutter: 0;
+}
+#hero {
+  column-span: 1;
+}
+#hero,
+.metric {
+  height: 4;
+  width: 1fr;
+  border: round $border;
+  background: transparent;
+  padding: 0 1;
+}
+UnitCard:focus {
+  border: round $primary;
+}
+Screen.wide #summary {
+  grid-size: 4;
+  height: 4;
+}
+Screen.wide #hero {
+  column-span: 1;
+}
+#chart-card {
+  height: 10;
+  background: $surface;
+  padding: 0 1;
+  margin: 0 0 1 0;
+}
+#mode-row {
+  height: 1;
+  align-horizontal: right;
+}
+MetricTab {
+  width: auto;
+  height: 1;
+  padding: 0 1;
+}
+MetricTab:focus {
+  background: $boost;
+}
+#trend {
+  height: 8;
+}
+Trend > .trend--cached {
+  color: $text-muted;
+}
+Trend > .trend--uncached {
+  color: $text;
+}
+App:ansi Trend > .trend--cached {
+  text-style: dim;
+}
+#trend-scroll {
+  height: 9;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-size-horizontal: 1;
+  scrollbar-background: $surface;
+  scrollbar-background-hover: $surface;
+  scrollbar-background-active: $surface;
+}
+#distributions {
+  layout: grid;
+  grid-size: 1;
+  grid-columns: 1fr;
+  grid-rows: auto;
+  height: auto;
+  grid-gutter: 1;
+}
+.distribution {
+  height: 1fr;
+  background: $surface;
+  padding: 1;
+}
+.distribution-header {
+  height: 1;
+}
+.distribution-title {
+  width: 1fr;
+  text-style: bold;
+}
+.distribution-data {
+  height: auto;
+}
+.distribution-spacer {
+  height: 1;
+}
+DistributionTab {
+  width: auto;
+  height: 1;
+  padding-left: 1;
+}
+DistributionTab:focus {
+  background: $boost;
+}
+Screen.wide #distributions {
+  grid-size: 2;
+}
+Screen.extra-wide #distributions {
+  grid-size: 4;
+}
+ModalScreen {
+  align: center middle;
+  background: $background 70%;
+}
+.modal-panel {
+  width: 1fr;
+  border: solid $border;
+  background: $surface;
+  padding: 0 1;
+}
+#date-shadow {
+  width: 90%;
+  max-width: 68;
+  height: auto;
+  max-height: 95%;
+  padding: 0 1 1 0;
+  background: $background-darken-3 85%;
+}
+#date-inputs {
+  height: 3;
+}
+#date-inputs Input {
+  width: 1fr;
+}
+#date-from {
+  margin-right: 1;
+}
+#date-dialog {
+  height: auto;
+}
+#dialog-title {
+  height: 1;
+  margin-bottom: 1;
+  text-style: bold;
+}
+.dialog-actions {
+  height: 3;
+  margin-top: 1;
+}
+.dialog-actions Button {
+  width: 1fr;
+}
+#date-error {
+  height: 1;
+  display: none;
+  color: $error;
+}
+Tooltip {
+  background: $panel;
+  color: $text;
+  border: none;
+  padding: 0;
+  margin: 0;
+  offset-y: 1;
+}
+ChartTooltip {
+  layer: chart-tooltip;
+  overlay: screen;
+  position: absolute;
+  display: none;
+  background: $panel;
+  color: $text;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
