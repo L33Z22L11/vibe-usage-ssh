@@ -1,6 +1,6 @@
 # Vibe Usage SSH
 
-通过 SSH 查看 [Vibe Cafe 用量](https://vibecafe.ai/usage)（下称 Vibe Usage）的小看板，使用 Python、AsyncSSH 和 Textual。支持鼠标和能传递终端鼠标事件的触屏客户端，也可以通过 frpc 内网穿透，让朋友从外网通过 SSH 连接，看看你的用量。
+通过 SSH 查看 [VibeFriends 用量](https://vibefriends.com/usage)（下称 Vibe Usage）的小看板，使用 Python、AsyncSSH 和 Textual。支持鼠标和能传递终端鼠标事件的触屏客户端，也可以通过 frpc 内网穿透，让朋友从外网通过 SSH 连接，看看你的用量。
 
 - 费用、Token、缓存命中率和活跃时长。
 - 今天、24 小时、7/30/90 天与自定义日期。
@@ -24,10 +24,10 @@ python3 -m venv .venv
 cp .env.example .env
 ```
 
-在 [Vibe Usage 设置](https://vibecafe.ai/usage/setup)生成 API Key，然后编辑 `.env`，填入自己的 API 地址和 Key：
+在 [Vibe Usage 设置](https://vibefriends.com/usage/setup)生成 API Key，然后编辑 `.env`，填入自己的 API 地址和 Key：
 
 ```dotenv
-VIBE_API_URL=https://vibecafe.ai
+VIBE_API_URL=https://vibefriends.com
 VIBE_API_KEY=your-api-key
 VIBE_SSH_HOST=127.0.0.1
 VIBE_SSH_PORT=5163

@@ -19,6 +19,25 @@ class ConfigurationTests(unittest.TestCase):
         ):
             self.assertEqual(api_credentials(), ("https://example.com", "example-key"))
 
+    def test_default_and_legacy_official_urls_use_new_domain(self):
+        for settings in ({}, {"VIBE_API_URL": "https://vibecafe.ai/"}):
+            with (
+                self.subTest(settings=settings),
+                patch.dict(os.environ, {"VIBE_API_KEY": "example-key", **settings}, clear=True),
+            ):
+                self.assertEqual(api_credentials(), ("https://vibefriends.com", "example-key"))
+
+    def test_legacy_desktop_config_uses_new_domain(self):
+        with tempfile.TemporaryDirectory() as directory:
+            config = Path(directory) / ".vibe-usage" / "config.json"
+            config.parent.mkdir()
+            config.write_text('{"apiKey":"desktop-key","apiUrl":"https://vibecafe.ai"}')
+            with (
+                patch.dict(os.environ, {}, clear=True),
+                patch("pathlib.Path.home", return_value=Path(directory)),
+            ):
+                self.assertEqual(api_credentials(), ("https://vibefriends.com", "desktop-key"))
+
     def test_generated_host_key_is_private_and_reused(self):
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / "ssh" / "key"
